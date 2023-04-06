@@ -1,16 +1,20 @@
 import Select from 'react-select'
-import { Inter } from 'next/font/google'
-
-
-const inter = Inter({ subsets: ['latin'] })
+import styles from '../styles/page.module.scss'
+import Card from 'react-animated-3d-card'
+import { useState, useEffect } from 'react'
 
 export default function Home() {
 
+  const [games, setGames] = useState([]);
   const loadRandomGames = async (nb) => {
     const response = await fetch(`/api/igdb/randomgames?nb=${nb}`);
     const data = await response.json();
+    setGames(data);
   }
 
+  useEffect(() => {
+    loadRandomGames(10);
+  }, []);
 
 
   const options = [
@@ -21,11 +25,27 @@ export default function Home() {
 
 
   return (
-    <>
-      <main className='container' >
-        <h1>Et si vous découvriez un nouveau jeux ?</h1>
-        <Select options={options} />
-      </main>
-    </>
+    <main className={styles.background}>
+      <div className="container text-center">
+        <div className="row">
+          <div className="col">
+          </div>
+          <div className="col-7 mt-5">
+            <div className="card ">
+              <div classn="card-body">
+                <h1 className={styles.titre}>Et si vous découvriez un nouveau jeux ?</h1>
+              </div>
+            </div>
+          </div>
+          <div className="col">
+          </div>
+          <Select options={options} className='mt-5' />
+        </div>
+    
+      </div>
+    </main>
   )
+
+
+  
 }

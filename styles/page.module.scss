@@ -1,0 +1,16 @@
+.titre {
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  color: rgb(9, 124, 225);
+
+}
+
+
+.background {
+ background-image: url('../public/images/fondecran.png');
+ background-size: cover;
+ background-position: center center;
+ background-repeat: no-repeat;
+ height: 100vh;
+//  filter: brightness(70%);
+}
