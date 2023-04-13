@@ -1,3 +1,4 @@
+// import { useEffect, useState, useId } from 'react';
 import Select from 'react-select'
 import styles from '../styles/page.module.scss'
 import Card from 'react-animated-3d-card'
@@ -22,6 +23,8 @@ export default function Home() {
     const result = url.replace(/thumb/g, size);
     return result;
   }
+
+  
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
