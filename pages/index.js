@@ -7,12 +7,13 @@ import { useState, useEffect } from 'react'
 export default function Home() {
   //code permet de récupérer les jeux aléatoirement
   const [games, setGames] = useState([]);
+  const [searchText, setSearchText] = useState('');
+
 
   const loadRandomGames = async (nb) => {
     const response = await fetch(`/api/igdb/randomgames?nb=${nb}`);
     const data = await response.json();
     setGames(data);
-    console.log(data);
   }
 
   useEffect(() => {
@@ -24,12 +25,13 @@ export default function Home() {
     return result;
   }
 
-  
-  const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-  ]
+  const options = games.map((game) => {
+    return { value: game.id, label: game.name };
+  });
+
+  const handleSelectedOption = (selectedOption) => {
+    router.push(`/games/${selectedOption.value}`);
+  };
 
 
   return (
@@ -47,7 +49,14 @@ export default function Home() {
           </div>
           <div className="col">
           </div>
-          <Select instanceId='rand' options={options} className='mt-5' />
+          <Select className='mt-5'
+            value={searchText}
+            onChange={(selectedOption) => setSearchText(selectedOption.label)}
+            options={options}
+            placeholder="Rechercher un jeu..."
+            onMenuClose={() => handleSelectedOption({ value: searchText, label: searchText })}
+          />
+          {/* <Select instanceId='rand' options={options} className='mt-5' /> */}
         </div>
 
         <div className="row mt-5 gy-4 ">
