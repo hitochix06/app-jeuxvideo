@@ -22,11 +22,11 @@ export default function Home() {
     const result = url.replace(/thumb/g, size);
     return result;
   }
-  // const options = [
-  //   { value: 'chocolate', label: 'Chocolate' },
-  //   { value: 'strawberry', label: 'Strawberry' },
-  //   { value: 'vanilla', label: 'Vanilla' }
-  // ]
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
 
 
   return (
@@ -44,10 +44,10 @@ export default function Home() {
           </div>
           <div className="col">
           </div>
-          {/* <Select instanceId='rand' options={options} className='mt-5' /> */}
+          <Select instanceId='rand' options={options} className='mt-5' />
         </div>
 
-        <div className="row mt-5 ">
+        <div className="row mt-5 gy-4 ">
           {games.map((game, i) => (
             <div className="col-3" key={i}>
               <Card
