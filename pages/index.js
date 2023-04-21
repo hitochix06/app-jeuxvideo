@@ -1,37 +1,63 @@
-// import { useEffect, useState, useId } from 'react';
 import Select from 'react-select'
 import styles from '../styles/page.module.scss'
 import Card from 'react-animated-3d-card'
-import { useState, useEffect } from 'react'
+import _ from 'lodash';
+import { useRouter } from 'next/router';
+import { useEffect, useState, useId } from 'react';
 
 export default function Home() {
-  //code permet de récupérer les jeux aléatoirement
+  const router = useRouter();
   const [games, setGames] = useState([]);
-  const [searchText, setSearchText] = useState('');
+  const [searchValue, setSearchValue] = useState('');
+  const [options, setOptions] = useState([]);
+  const selectOption = (game) => {
+    router.push(`/game/${game.value}`);
+  };
 
-
+  //code  jeux aléatoire
   const loadRandomGames = async (nb) => {
     const response = await fetch(`/api/igdb/randomgames?nb=${nb}`);
     const data = await response.json();
     setGames(data);
   }
-
   useEffect(() => {
-    loadRandomGames(8);
+    loadRandomGames(10);
   }, []);
 
+  //code pour choisir taille image
   const convertImage = (url, size) => {
     const result = url.replace(/thumb/g, size);
     return result;
   }
 
-  const options = games.map((game) => {
-    return { value: game.id, label: game.name };
-  });
+  //code pour limiter le nombre de requête à l'API en fonction de la recherche 
+  const handleInputChange = _.debounce(function (value) {
+    setSearchValue(value);
+  }, 300);
 
+
+
+  //code  qui propose des jeux en fonction de la recherche
   const handleSelectedOption = (selectedOption) => {
     router.push(`/games/${selectedOption.value}`);
   };
+
+  const SearchGames = async (query) => {
+    const response = await fetch(`/api/igdb/games?query=${query}`);
+    const data = await response.json();
+    const result = data.map((game) => ({ label: game.name, value: game.slug }));
+    setOptions(result);
+  };
+
+
+
+  // Quand "searchValue" est mis à jour, lance la fonction searchGames
+  useEffect(() => {
+    if (searchValue.length) {
+      SearchGames(searchValue);
+    }
+  }, [searchValue]);
+
 
 
   return (
@@ -50,23 +76,23 @@ export default function Home() {
           <div className="col">
           </div>
           <Select className='mt-5'
-            value={searchText}
-            onChange={(selectedOption) => setSearchText(selectedOption.label)}
-            options={options}
             placeholder="Rechercher un jeu..."
-            onMenuClose={() => handleSelectedOption({ value: searchText, label: searchText })}
+            instanceId={useId()}
+            value={searchValue}
+            options={options}
+            onInputChange={handleInputChange}
+            onChange={selectOption}
           />
-          {/* <Select instanceId='rand' options={options} className='mt-5' /> */}
         </div>
 
         <div className="row mt-5 gy-4 ">
           {games.map((game, i) => (
-            <div className="col-3" key={i}>
+            <div className="col" key={i}>
               <Card
                 style={{
                   backgroundColor: 'blue',
                   width: '200px',
-                  height: '200px',
+                  height: '250px',
                   cursor: 'pointer',
                 }}
                 onClick={() => console.log('clicked')}
