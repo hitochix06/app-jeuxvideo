@@ -84,55 +84,18 @@ export default function Game() {
                     {/* cree une notation de jeux avec des etoiles */}
                     <div className="mt-4 text-center">
                       <h3>Notation</h3>
-                      <div className="d-flex align-items-center">
-                        <div className="me-3">
-                          <span className="fs-1">{allGameInfos.total_rating}</span>
-                          <span className="fs-6">/100</span>
-                        </div>
+                      <div className="me-3">
+                        <span className="fs-1">{allGameInfos.total_rating}</span>
+                        <span className="fs-6">/100</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
 
-          <div className="container mt-4 text-white">
-            <h2>What is {allGameInfos.name} ?</h2>
-            <div className="row">
-              <div className="col-md-7">
-                <div className={styles.summary}>
-                  <p className="mt-3 fs-5">
-                    {allGameInfos.summary}
-                  </p>
-                </div>
 
-                <a href={allGameInfos.websites[0].url} target="_blank" className="btn btn-lg btn-primary mt-4">Télécharger  le jeu</a>
-
-              </div>
-              <div className="col-md-5">
-                <div id="carouselExampleRide" className="carousel slide" data-bs-ride="true">
-                  <div className="carousel-inner">
-                    {allGameInfos.screenshots.map((screenshot, i) =>
-                      <div key={i} className={i === 0 ? 'carousel-item active' : 'carousel-item '}>
-                        <Image src={retrieveCarouselImg(screenshot.url)} width={600} height={300} alt={`Photo ${i} de ${allGameInfos.name}`} className="d-block " />
-                      </div>
-                    )}
-                  </div>
-                  <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
-                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Previous</span>
-                  </button>
-                  <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
-                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Next</span>
-                  </button>
-                </div>
-
-              </div>
-            </div>
-          </div>
           {allGameInfos.videos &&
             <div className="container text-center mt-5">
               <h2>Watch the trailer to see more</h2>
