@@ -95,7 +95,7 @@ export default function Home() {
                   height: '250px',
                   cursor: 'pointer',
                 }}
-                onClick={() => console.log('clicked')}
+                onClick={() => selectOption({ value: game.slug })}
               >
                 <img src={convertImage(game.cover.url, "720p")} alt={game.name} style={{ width: '100%', height: 'auto', maxHeight: '300px' }} />
               </Card>
