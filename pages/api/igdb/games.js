@@ -6,7 +6,7 @@ export default async function handler(req, res) {
      'Client-ID': process.env.IGDB_CLIENT_ID,
      'Authorization': `Bearer ${process.env.IGDB_ACCESS_TOKEN}`,
    },
-   body: `fields name, slug; search "${req.query.query}"; limit 10; where cover != null;`,
+   body: `fields name, slug; search "${req.query.query}"; limit 10; where cover != null & screenshots.url != null ;`,
  };
 
  const response = await fetch(url, options);

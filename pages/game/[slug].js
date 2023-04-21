@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { useRouter } from 'next/router';
 import Image from "next/image";
 import styles from "@/styles/gamepage.module.scss"
-import Wallpaper from '@/public/img/wallpaper.jpg';
 
 
 export default function Game() {
