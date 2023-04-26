@@ -50,20 +50,67 @@ export default function Game() {
               alt="Image de fond"></Image>
           </header>
 
+          {allGameInfos.videos &&
+            <div className="container text-center mt-5">
+              {/* <h2>Watch the trailer to see more</h2> */}
+              <iframe className="mt-4 w-100" width="1280" height="720" src={"https://www.youtube.com/embed/" + allGameInfos.videos[0].video_id} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+          }
+
+          <div className="container mt-5">
+            <div className="row row-cols-1 row-cols-md-3 g-4">
+              <div className="col">
+                <div className="card shadow">
+                  <div className="card-body text-bg-secondary text-center" >
+                    <h5 className="card-title">Notation</h5>
+                    <div className={styles.box}>
+                      <p className="card-text">{Math.floor(allGameInfos.rating)}/100</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col">
+                <div className="card shadow">
+                  <div className="card-body text-bg-secondary text-center">
+                    <h5 className="card-title">Plateforme jeux</h5>
+                    {/* recupere les plateformes */}
+                    <div className={styles.box}>
+                      <p className="card-text">{allGameInfos.platforms.map(platform =>
+                        platform.abbreviation
+                      )}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col">
+                <div className="card shadow">
+                  <div className="card-body text-bg-secondary text-center">
+                    <h5 className="card-title">Date</h5>
+                    <div className={styles.box}>
+                      <p className="card-text">{allGameInfos.release_dates.map(date =>
+                        date.date)}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="container mt-4 text-white">
-            <div class="row">
-              <div class="col-sm-6 mb-3 mb-sm-0">
-                <div class="card">
-                  <div class="card-body card text-bg-success">
-                    <h1 class="card-title">What is {allGameInfos.name} ?</h1>
-                    <p class="card-text">{allGameInfos.summary}</p>
+            <div className="row">
+              <div className="col-sm-6 mb-3 mb-sm-0">
+                <div className={`card_box`}>
+                  <div className="card-body card text-bg-secondary shadow">
+                    <h1 className="card-title">{allGameInfos.name}</h1>
+                    <p className="card-text">{allGameInfos.summary}</p>
                     <a href={allGameInfos.websites[0].url} target="_blank" className="btn btn-lg btn-primary mt-4">Télécharger  le jeu</a>
                   </div>
                 </div>
               </div>
-              <div class="col-sm-6">
-                <div class="card">
-                  <div class="card-body card text-bg-success">
+
+              <div className="col-sm-6">
+                <div className="card">
+                  <div className="card-body card text-bg-secondary shadow">
                     <div id="carouselExampleRide" className="carousel slide" data-bs-ride="true">
                       <div className="carousel-inner">
                         {allGameInfos.screenshots.map((screenshot, i) =>
@@ -81,14 +128,7 @@ export default function Game() {
                         <span className="visually-hidden">Next</span>
                       </button>
                     </div>
-                    {/* cree une notation de jeux avec des etoiles */}
-                    <div className="mt-4 text-center">
-                      <h3>Notation</h3>
-                      <div className="me-3">
-                        <span className="fs-1">{allGameInfos.total_rating}</span>
-                        <span className="fs-6">/100</span>
-                      </div>
-                    </div>
+
                   </div>
                 </div>
               </div>
@@ -96,23 +136,41 @@ export default function Game() {
           </div>
 
 
-          {allGameInfos.videos &&
-            <div className="container text-center mt-5">
-              <h2>Watch the trailer to see more</h2>
-              <iframe className="mt-4 w-100" width="1280" height="720" src={"https://www.youtube.com/embed/" + allGameInfos.videos[0].video_id} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-          }
+          <div className="container mt-4 text-white">
+            <div className="row">
+              <div className="col-sm-6 mb-3 mb-sm-0">
+                <div className="card shadow">
+                  <div className="card-body text-bg-secondary text-center">
+                    <h5 className="card-title">Genres</h5>
+                    <div className={styles.box}>
+                      <p className="card-text">{allGameInfos.genres.map(jeux =>
+                        jeux.name)}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-          <div className="container mt-5">
-            <h3>Ressources :</h3>
-            <ul>
-              {allGameInfos.websites.map((website, i) =>
-                <li key={i}>
-                  <a target="_blank" href={website.url}>{website.url}</a>
-                </li>
-              )}
-            </ul>
+              <div className="col-sm-6">
+                <div className="card ">
+                  <div className="card-body card text-bg-secondary shadow">
+                    <div className="container mt-5">
+                      <h3>Ressources :</h3>
+                      <ul>
+                        {allGameInfos.websites.map((website, i) =>
+                          <li key={i}>
+                            <a target="_blank" href={website.url}>{website.url}</a>
+                          </li>
+                        )}
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+
+
 
         </main>
       }
