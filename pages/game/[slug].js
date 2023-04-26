@@ -63,6 +63,8 @@ export default function Game() {
                 <div className="card shadow">
                   <div className="card-body text-bg-secondary text-center" >
                     <h5 className="card-title">Notation</h5>
+                    {/* cree un code  pour Notation  avec forme etoile  */}
+                    
                     <div className={styles.box}>
                       <p className="card-text">{Math.floor(allGameInfos.rating)}/100</p>
                     </div>

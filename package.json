@@ -17,6 +17,7 @@
     "react-animated-3d-card": "^1.0.2",
     "react-dom": "18.2.0",
     "react-select": "^5.7.2",
+    "react-simple-star-rating": "^5.1.7",
     "sass": "^1.60.0",
     "sharp": "^0.32.0"
   }
