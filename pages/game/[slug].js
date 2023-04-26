@@ -76,7 +76,9 @@ export default function Game() {
                     {/* recupere les plateformes */}
                     <div className={styles.box}>
                       <p className="card-text">{allGameInfos.platforms.map(platform =>
-                        platform.abbreviation
+                        <span className="me-1">
+                          {platform.abbreviation},
+                        </span>
                       )}</p>
                     </div>
                   </div>
@@ -88,7 +90,10 @@ export default function Game() {
                     <h5 className="card-title">Date</h5>
                     <div className={styles.box}>
                       <p className="card-text">{allGameInfos.release_dates.map(date =>
-                        date.date)}</p>
+                        <ul>
+                          {new Date(date.date * 1000).toLocaleDateString("fr")}
+                        </ul>
+                      )}</p>
                     </div>
                   </div>
                 </div>
@@ -143,18 +148,25 @@ export default function Game() {
                   <div className="card-body text-bg-secondary text-center">
                     <h5 className="card-title">Genres</h5>
                     <div className={styles.box}>
+
                       <p className="card-text">{allGameInfos.genres.map(jeux =>
-                        jeux.name)}</p>
+                        <span className="me-1">
+                          {jeux.name},
+                        </span>
+                      )}</p>
                     </div>
                   </div>
                 </div>
               </div>
+
+
 
               <div className="col-sm-6">
                 <div className="card ">
                   <div className="card-body card text-bg-secondary shadow">
                     <div className="container mt-5">
                       <h3>Ressources :</h3>
+
                       <ul>
                         {allGameInfos.websites.map((website, i) =>
                           <li key={i}>
@@ -162,6 +174,7 @@ export default function Game() {
                           </li>
                         )}
                       </ul>
+
                     </div>
 
                   </div>
@@ -172,7 +185,7 @@ export default function Game() {
 
 
 
-        </main>
+        </main >
       }
     </>
   )
