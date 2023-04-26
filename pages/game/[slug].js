@@ -2,9 +2,19 @@ import { useEffect, useState } from "react"
 import { useRouter } from 'next/router';
 import Image from "next/image";
 import styles from "@/styles/gamepage.module.scss"
+import { Rating } from "react-simple-star-rating";
 
 
 export default function Game() {
+
+  const [rating, setRating] = useState(0); // initial rating value
+
+  // Catch Rating value
+  const hanleRating = (rate) => {
+    setRating(rate);
+    // Some logic
+  }
+
   const router = useRouter();
   const [allGameInfos, setAllGamesInfos] = useState(null);
 
@@ -64,7 +74,7 @@ export default function Game() {
                   <div className="card-body text-bg-secondary text-center" >
                     <h5 className="card-title">Notation</h5>
                     {/* cree un code  pour Notation  avec forme etoile  */}
-                    
+                    <Rating onClick={hanleRating} ratingValue={rating} /* Rating Props */ />
                     <div className={styles.box}>
                       <p className="card-text">{Math.floor(allGameInfos.rating)}/100</p>
                     </div>
