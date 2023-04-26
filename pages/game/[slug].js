@@ -87,6 +87,11 @@ export default function Game() {
               <div className="col">
                 <div className="card shadow">
                   <div className="card-body text-bg-secondary text-center">
+                    <p className="card-text">{allGameInfos.platforms.map(platform =>
+                      <span className="me-1">
+                        {platform.abbreviation},
+                      </span>
+                    )}</p>
                     <h5 className="card-title">Date</h5>
                     <div className={styles.box}>
                       <p className="card-text">{allGameInfos.release_dates.map(date =>
@@ -170,7 +175,7 @@ export default function Game() {
                       <ul>
                         {allGameInfos.websites.map((website, i) =>
                           <li key={i}>
-                            <a target="_blank" href={website.url}>{website.url}</a>
+                            <a target="_blank" className="text-white text-decoration-none" href={website.url}>{website.url}</a>
                           </li>
                         )}
                       </ul>
