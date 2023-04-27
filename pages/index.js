@@ -64,12 +64,16 @@ export default function Home() {
     <main className={styles.background}>
       <div className="container text-center">
         <div className="row">
+          <div className="col">
+          </div>
           <div className="col-7 mt-5">
             <div className="card ">
               <div classn="card-body">
                 <h1 className={styles.titre}>Et si vous découvriez un nouveau jeux ?</h1>
               </div>
             </div>
+          </div>
+          <div className="col">
           </div>
           <Select className='mt-5'
             placeholder="Rechercher un jeu..."

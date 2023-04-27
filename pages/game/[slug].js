@@ -180,8 +180,8 @@ export default function Game() {
 
 
               <div className="col-sm-6">
-                <div className="card ">
-                  <div className="card-body card text-bg-secondary shadow">
+                <div className="card shadow">
+                  <div className="card-body card text-bg-secondary">
                     <div className="container mt-5">
                       <h3>Ressources :</h3>
                       <ul>
