@@ -85,10 +85,8 @@ export default function Game() {
                   <div className="card-body text-bg-secondary text-center" >
                     <h5 className="card-title">Notation</h5>
                     {/* code qui recupere api la note du jeu et l'affiche en étoile avec la librairie react-simple-star-rating  */}
-                    <Rating onClick={hanleRating} ratingValue={Math.floor(allGameInfos.rating / 10)} /* Rating Props */ />
-                    <div className={styles.box}>
-                      <p className="card-text">{Math.floor(allGameInfos.rating / 10)}/10</p>
-                    </div>
+                    <Rating readonly initialValue={Math.floor(allGameInfos.rating / 20)} /* Rating Props */ />
+
                   </div>
                 </div>
               </div>
