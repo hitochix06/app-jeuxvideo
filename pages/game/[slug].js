@@ -11,6 +11,7 @@ export default function Game() {
 
   // Catch Rating value
   const hanleRating = (rate) => {
+    console.log(rate)
     setRating(rate);
     // Some logic
   }
@@ -43,6 +44,7 @@ export default function Game() {
     }
   }, [router.isReady])
 
+
   return (
     <>
       {allGameInfos &&
@@ -73,10 +75,10 @@ export default function Game() {
                 <div className="card shadow">
                   <div className="card-body text-bg-secondary text-center" >
                     <h5 className="card-title">Notation</h5>
-                    {/* cree un code  pour Notation  avec forme etoile  */}
-                    <Rating onClick={hanleRating} ratingValue={rating} /* Rating Props */ />
+                    {/* code qui recupere api la note du jeu et l'affiche en étoile avec la librairie react-simple-star-rating  */}
+                    <Rating onClick={hanleRating} ratingValue={Math.floor(allGameInfos.rating / 10)} /* Rating Props */ />
                     <div className={styles.box}>
-                      <p className="card-text">{Math.floor(allGameInfos.rating)}/100</p>
+                      <p className="card-text">{Math.floor(allGameInfos.rating / 10)}/10</p>
                     </div>
                   </div>
                 </div>
@@ -98,32 +100,35 @@ export default function Game() {
                 <div className="card shadow">
                   <div className="card-body text-bg-secondary text-center">
                     <h5 className="card-title">Date</h5>
-                    <p className="card-text">{allGameInfos.release_dates.map(date =>
-                      <span className="me-1">
-                        {new Date(date.date * 1000).toLocaleDateString("fr")},
-                      </span>
-                    )}</p>
+                    <div className={styles.polic}>
+                      <p className="card-text">{allGameInfos.release_dates.map(date =>
+                        <span className="me-1">
+                          {new Date(date.date * 1000).toLocaleDateString("fr")},
+                        </span>
+                      )}</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div className="container mt-4 text-white">
-            <div className="row">
-              <div className="col-sm-6 mb-3 mb-sm-0">
-                <div className={`card_box`}>
-                  <div className="card-body card text-bg-secondary shadow">
+          {/* code creation la carde avec les infos du jeu */}
+          <div className="container mt-5">
+            <div class="row">
+              <div class="col-sm-6 mb-3 mb-sm-3">
+                <div class="card shadow ">
+                  <div class="card-body text-bg-secondary ">
                     <h1 className="card-title">{allGameInfos.name}</h1>
                     <p className="card-text">{allGameInfos.summary}</p>
-                    <a href={allGameInfos.websites[0].url} target="_blank" className="btn btn-lg btn-primary mt-4">Télécharger  le jeu</a>
+                    <div class="d-grid gap-2">
+                      <a href={allGameInfos.websites[0].url} target="_blank" className="btn btn-lg btn-primary mt-4">Télécharger  le jeu</a>
+                    </div>
                   </div>
                 </div>
               </div>
-
-              <div className="col-sm-6">
-                <div className="card">
-                  <div className="card-body card text-bg-secondary shadow">
+              <div class="col-sm-6">
+                <div class="card ">
+                  <div class="card-body text-bg-secondary ">
                     <div id="carouselExampleRide" className="carousel slide" data-bs-ride="true">
                       <div className="carousel-inner">
                         {allGameInfos.screenshots.map((screenshot, i) =>
@@ -141,14 +146,13 @@ export default function Game() {
                         <span className="visually-hidden">Next</span>
                       </button>
                     </div>
-
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-
+          {/* code creation la card avec les infos du jeu genres et ressources */}
           <div className="container mt-4 text-white">
             <div className="row">
               <div className="col-sm-6 mb-3 mb-sm-0">
