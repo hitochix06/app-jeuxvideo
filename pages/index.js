@@ -86,7 +86,8 @@ export default function Home() {
         </div>
         {/* code pour afficher le card 3D avec les jeux */}
         <div className="row mt-5 gy-4 ">
-          {games.map((game, i) => (
+          {games &&
+          games.map((game, i) => (
             <div className="col" key={i}>
               <Card
                 style={{
