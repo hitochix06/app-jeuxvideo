@@ -75,6 +75,8 @@ export default function Game() {
               <iframe className="mt-4 w-100" width="1280" height="720" src={"https://www.youtube.com/embed/" + allGameInfos.videos[0].video_id} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
           }
+
+
           {/* code pour afficher les infos du jeu date note et plateforme */}
           <div className="container mt-5">
             <div className="row row-cols-1 row-cols-md-3 g-4">
@@ -167,7 +169,6 @@ export default function Game() {
                 <div className="card shadow">
                   <div className="card-body text-bg-secondary text-center">
                     <h5 className="card-title">Genres</h5>
-
                     <p className="card-text">{allGameInfos.genres.map(jeux =>
                       <span className="me-1">
                         {jeux.name},
@@ -178,20 +179,18 @@ export default function Game() {
                 </div>
               </div>
 
-
-              <div className="col-sm-6">
+              <div className="col-sm-6 mb-3">
                 <div className="card shadow">
-                  <div className="card-body card text-bg-secondary">
-                    <div className="container mt-5">
-                      <h3>Ressources :</h3>
-                      <ul>
-                        {allGameInfos.websites.map((website, i) =>
-                          <li key={i}>
-                            <a target="_blank" className="text-white text-decoration-none" href={website.url}>{website.url}</a>
-                          </li>
-                        )}
-                      </ul>
-                    </div>
+                  <div className="card-body text-bg-secondary">
+                    <h3 className="card-title">Ressources</h3>
+                    <ul>
+                      {allGameInfos.websites.map((website, i) =>
+                        <li key={i}>
+                          <a target="_blank" className="text-white text-decoration-none" href={website.url}>{website.url}</a>
+                        </li>
+                      )}
+                    </ul>
+
                   </div>
                 </div>
               </div>
