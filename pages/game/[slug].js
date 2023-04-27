@@ -79,7 +79,7 @@ export default function Game() {
 
           {/* code pour afficher les infos du jeu date note et plateforme */}
           <div className="container mt-5">
-            <div className="row row-cols-1 row-cols-md-3 g-4">
+            <div className="row row-col-lg-4 row-cols-ms-3 g-2">
               <div className="col">
                 <div className="card shadow">
                   <div className="card-body text-bg-secondary text-center" >
@@ -125,7 +125,7 @@ export default function Game() {
           {/* code creation la card avec les infos du jeu */}
           <div className="container mt-5">
             <div className="row">
-              <div className="col-sm-6 mb-3 mb-sm-3">
+              <div className="col-lg-6 mt-2 ">
                 <div className="card shadow ">
                   <div className="card-body text-bg-secondary ">
                     <h1 className="card-title">{allGameInfos.name}</h1>
@@ -136,7 +136,7 @@ export default function Game() {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6">
+              <div className="col-lg-6 mt-2">
                 <div className="card shadow ">
                   <div className="card-body text-bg-secondary ">
                     <div id="carouselExampleRide" className="carousel slide" data-bs-ride="true">
@@ -165,7 +165,7 @@ export default function Game() {
           {/* code creation la card avec les infos du jeu genres et ressources */}
           <div className="container mt-4 text-white">
             <div className="row">
-              <div className="col-sm-6 mb-3 mb-sm-0">
+              <div className="col-lg-6 mt-2 ">
                 <div className="card shadow">
                   <div className="card-body text-bg-secondary text-center">
                     <h5 className="card-title">Genres</h5>
@@ -179,7 +179,7 @@ export default function Game() {
                 </div>
               </div>
 
-              <div className="col-sm-6 mb-3">
+              <div className="col-lg-6 mt-2">
                 <div className="card shadow">
                   <div className="card-body text-bg-secondary">
                     <h3 className="card-title">Ressources</h3>
