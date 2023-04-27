@@ -86,7 +86,9 @@ export default function Game() {
                     <h5 className="card-title">Notation</h5>
                     {/* code qui recupere api la note du jeu et l'affiche en étoile avec la librairie react-simple-star-rating  */}
                     <Rating readonly initialValue={Math.floor(allGameInfos.rating / 20)} /* Rating Props */ />
-
+                    <div className={styles.box}>
+                      <p className="card-text">{Math.floor(allGameInfos.rating / 20)}/5</p>
+                    </div>
                   </div>
                 </div>
               </div>
