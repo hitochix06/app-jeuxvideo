@@ -16,9 +16,11 @@ export default function Game() {
     // Some logic
   }
 
+
   const router = useRouter();
   const [allGameInfos, setAllGamesInfos] = useState(null);
 
+  // code pour recupere api le jeu
   const fetchGame = async (name) => {
     const response = await fetch(`/api/igdb/game?query=${name}`);
     const data = await response.json();
@@ -26,12 +28,14 @@ export default function Game() {
     console.log(data[0])
   }
 
+  // code pour choisir taille image
   const retrieveCoverImg = (url) => {
     const regex = /t_thumb/g;
     const replacedStr = url.replace(regex, "t_1080p");
     return "https:" + replacedStr;
   }
 
+  // code pour choisir taille image
   const retrieveCarouselImg = (url) => {
     const regex = /t_thumb/g;
     const replacedStr = url.replace(regex, "t_720p");
@@ -48,7 +52,9 @@ export default function Game() {
   return (
     <>
       {allGameInfos &&
-        <main className="text-white">
+        <main className={styles.fondecran}>
+
+          {/* code pour affiche le header avec le nom du jeu et l'image de fond   */}
           <header className={`position-relative ${styles.header}`}>
             <div className={styles.gradient}></div>
             <div className="container align-items-center d-flex h-100 pb-5">
@@ -62,13 +68,14 @@ export default function Game() {
               alt="Image de fond"></Image>
           </header>
 
+          {/* code pour metre video du jeu  */}
           {allGameInfos.videos &&
             <div className="container text-center mt-5">
               {/* <h2>Watch the trailer to see more</h2> */}
               <iframe className="mt-4 w-100" width="1280" height="720" src={"https://www.youtube.com/embed/" + allGameInfos.videos[0].video_id} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
           }
-
+          {/* code pour afficher les infos du jeu date note et plateforme */}
           <div className="container mt-5">
             <div className="row row-cols-1 row-cols-md-3 g-4">
               <div className="col">
@@ -112,23 +119,24 @@ export default function Game() {
               </div>
             </div>
           </div>
-          {/* code creation la carde avec les infos du jeu */}
+
+          {/* code creation la card avec les infos du jeu */}
           <div className="container mt-5">
-            <div class="row">
-              <div class="col-sm-6 mb-3 mb-sm-3">
-                <div class="card shadow ">
-                  <div class="card-body text-bg-secondary ">
+            <div className="row">
+              <div className="col-sm-6 mb-3 mb-sm-3">
+                <div className="card shadow ">
+                  <div className="card-body text-bg-secondary ">
                     <h1 className="card-title">{allGameInfos.name}</h1>
                     <p className="card-text">{allGameInfos.summary}</p>
-                    <div class="d-grid gap-2">
+                    <div className="d-grid gap-2">
                       <a href={allGameInfos.websites[0].url} target="_blank" className="btn btn-lg btn-primary mt-4">Télécharger  le jeu</a>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-sm-6">
-                <div class="card ">
-                  <div class="card-body text-bg-secondary ">
+              <div className="col-sm-6">
+                <div className="card shadow ">
+                  <div className="card-body text-bg-secondary ">
                     <div id="carouselExampleRide" className="carousel slide" data-bs-ride="true">
                       <div className="carousel-inner">
                         {allGameInfos.screenshots.map((screenshot, i) =>

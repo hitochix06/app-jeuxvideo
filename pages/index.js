@@ -80,7 +80,7 @@ export default function Home() {
             onChange={selectOption}
           />
         </div>
-        {/* code pour afficher le card 3d avec les jeux */}
+        {/* code pour afficher le card 3D avec les jeux */}
         <div className="row mt-5 gy-4 ">
           {games.map((game, i) => (
             <div className="col" key={i}>
