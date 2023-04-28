@@ -179,7 +179,7 @@ export default function Game() {
                 </div>
               </div>
 
-              <div className="col-lg-6 mt-2">
+              <div className="col-lg-6 mt-2 p-3">
                 <div className="card shadow">
                   <div className="card-body text-bg-secondary">
                     <h3 className="card-title">Ressources</h3>
